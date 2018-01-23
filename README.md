@@ -34,3 +34,6 @@
 `rails generate rolify Role User`
 
 `rake db:migrate`
+
+Installation Bootstrap :
+https://github.com/twbs/bootstrap-rubygem
