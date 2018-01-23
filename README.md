@@ -19,4 +19,18 @@
 
 `rails g rspec:install`
 
-gem 'devise'
+`gem 'devise'`
+
+`rails generate devise:install :database_authenticatable :confirmable :recoverable :registerable :rememberable :trackable :validatable :lockable`
+
+`rails generate devise User first_name:string last_name:string`
+
+`gem 'cancancan', '~> 2.0'`
+
+`rails generate cancan:ability`
+
+`gem 'rolify'`
+
+`rails generate rolify Role User`
+
+`rake db:migrate`
