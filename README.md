@@ -19,3 +19,4 @@
 
 `rails g rspec:install`
 
+gem 'devise'
