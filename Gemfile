@@ -68,3 +68,7 @@ gem 'ransack'
 gem 'font-awesome-rails'
 gem 'will_paginate'
 gem 'simple_form'
+
+gem 'rails_admin', '~> 1.2'
+
+gem 'seed_dump'
