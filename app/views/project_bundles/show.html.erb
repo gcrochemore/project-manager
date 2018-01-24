@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project_bundle.name %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @project_bundle.project %>
+</p>
+
+<p>
+  <strong>Estimated time:</strong>
+  <%= @project_bundle.estimated_time %>
+</p>
+
+<%= render 'show_bundle_backlog', project_bundle: @project_bundle %>
+
+<%= link_to 'Edit', edit_project_bundle_path(@project_bundle) %> |
+<%= link_to 'Back', project_bundles_path %>

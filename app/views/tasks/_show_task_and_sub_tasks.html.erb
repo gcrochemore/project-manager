@@ -1,0 +1,4 @@
+<%= begin_line %> <%= task.name %> - <strong><%= task.estimated_time %></strong>
+<% task.tasks.each do |sub_task| %>
+    <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: (( defined? begin_time) ? '' : begin_line) + '-' %><br>
+<% end %>

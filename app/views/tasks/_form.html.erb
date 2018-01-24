@@ -1,0 +1,25 @@
+<%= simple_form_for(@task) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :identifier %>
+
+    <%= f.input :name %>
+
+    <%= f.input :description %>
+
+    <%= f.association :project %>
+
+    <%= f.association :project_bundle %>
+
+    <%= f.association :task %>
+
+    <%= f.input :estimated_time %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Temps estimé</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @project_bundle.tasks.without_parent_task.each do |task| %>
+        <tr>
+            <th rowspan="2"><%= task.identifier %></th>
+            <th><%= task.name %></th>
+            <th rowspan="2"><%= task.estimated_time %></th>
+        </tr>
+        <tr>
+            <td>
+            <% if !task.tasks.empty? %>
+                <% task.tasks.each do |sub_task| %>
+                    <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: '' %><br>
+                <% end %>
+            <% else %>
+                <i>Pas de sous-tache</i>
+            <% end %>
+            </td>
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>

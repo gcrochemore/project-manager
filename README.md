@@ -49,3 +49,15 @@ https://github.com/twbs/bootstrap-rubygem
 ##### Database
   
 `rake db:seed:dump EXCLUDE=[]`
+
+`rake db:seed:dump models_exclude="User, Role"`
+
+#### Entity
+
+`rails generate scaffold Organization name:string`
+
+`rails generate scaffold Project name:string organization:references bug_tracker:string`
+
+`rails generate scaffold ProjectBundle name:string project:references estimated_time:float`
+
+`rails generate scaffold Task identifier:integer name:string description:text project:references project_bundle:references task:references estimated_time:float`
