@@ -1,4 +1,4 @@
-<table class="table table-bordered table-sm">
+<table class="table table-striped table-sm">
     <thead>
         <tr>
             <th>ID</th>
@@ -10,9 +10,15 @@
 
     <% @project_bundle.tasks.without_parent_task.each do |task| %>
         <tr>
-            <th rowspan="2"><%= task.identifier %></th>
+            <th rowspan="2" class="align-middle">
+                <% if !task.project.bug_tracker.nil? %>
+                    <%= link_to task.identifier.to_s, task.project.bug_tracker + task.identifier.to_s, target: "_blank" %>
+                <% else %>
+                    <%= task.identifier %>
+                <% end %>
+            </th>
             <th><%= task.name %></th>
-            <th rowspan="2"><%= task.estimated_time %></th>
+            <th rowspan="2" class="align-middle"><%= task.estimated_time %></th>
         </tr>
         <tr>
             <td>

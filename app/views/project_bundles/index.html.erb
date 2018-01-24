@@ -1,4 +1,4 @@
-<h1><%= t('.title') %><span class="badge"><%= @project_bundles.count %></span></h1>
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @project_bundles.count %></span></h1>
 
 <div class="row">
   <div class="col-2">
@@ -8,7 +8,7 @@
 
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.project_bundle.name')} %>
 
-        <%= f.search_field :project_cont, {placeholder: t('activerecord.attributes.project_bundle.project')} %>
+        <%= f.search_field :project_name_cont, {placeholder: t('activerecord.attributes.project_bundle.project')} %>
 
         <%= f.search_field :estimated_time_cont, {placeholder: t('activerecord.attributes.project_bundle.estimated_time')} %>
 

@@ -6,4 +6,8 @@ class ProjectBundle < ApplicationRecord
     self.estimated_time = self.tasks.without_parent_task.sum(:estimated_time)
     self.save
   end
+
+  def to_s
+    self.name
+  end
 end
