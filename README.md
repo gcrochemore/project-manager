@@ -1,7 +1,9 @@
 ## Project Manager
 
-[ ![Codeship Status for gcrochemore/project-manager](https://app.codeship.com/projects/cd603c80-e2bc-0135-eacf-7e3cff71867b/status?branch=feat/initialisation-application)](https://app.codeship.com/projects/267935)
-
+[![Codeship Status for gcrochemore/project-manager](https://app.codeship.com/projects/cd603c80-e2bc-0135-eacf-7e3cff71867b/status?branch=feat/initialisation-application)](https://app.codeship.com/projects/267935)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2c458e18679eb22cddfd/maintainability)](https://codeclimate.com/github/gcrochemore/project-manager/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2c458e18679eb22cddfd/test_coverage)](https://codeclimate.com/github/gcrochemore/project-manager/test_coverage)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/gcrochemore/project-manager.svg)](https://beta.gemnasium.com/projects/github.com/gcrochemore/project-manager)
 # Installation :
 
 - Check rails version

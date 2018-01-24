@@ -1,9 +1,3 @@
-User::HABTM_Roles.create!([
-  {user_id: 1, role_id: 1}
-])
-Role::HABTM_Users.create!([
-  {user_id: 1, role_id: 1}
-])
 Organization.create!([
   {name: "TRSB Rouen"}
 ])
