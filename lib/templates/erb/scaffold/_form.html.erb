@@ -3,10 +3,7 @@
 
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
-    <div class="form-group">
-      <label for="<%= attribute.name %>"><%%= f.label :<%= attribute.name %> %></label>
-      <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: false, input_html: { class: "form-control" } %>
-    </div>
+    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
   <%- end -%>
   </div>
 

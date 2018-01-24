@@ -62,3 +62,9 @@ gem 'rolify'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+
+gem 'kaminari'
+gem 'ransack'
+gem 'font-awesome-rails'
+gem 'will_paginate'
+gem 'simple_form'

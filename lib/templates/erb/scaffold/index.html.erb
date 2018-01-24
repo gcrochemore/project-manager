@@ -17,7 +17,7 @@
   <div class="col">
     <div class="col-md-3 btn-new-top">
       <%% if can? :create, <%= plural_table_name.classify  %> %>
-        <%%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+        <%%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
       <%% end %>
     </div>
     <table class="table table-hover table-sm table-bordered">
@@ -37,12 +37,12 @@
             <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
     <% end -%>
             <td>
-              <%%= link_to icon('eye').html_safe, <%= singular_table_name %> %>
+              <%%= link_to fa_icon('eye').html_safe, <%= singular_table_name %> %>
               <%% if can? :edit, <%= plural_table_name.classify  %> %>
-                <%%= link_to icon('pencil').html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
+                <%%= link_to fa_icon('pencil').html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
               <%% end %>
               <%% if can? :destroy, <%= plural_table_name.classify  %> %>
-                <%%= link_to icon('times').html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%%= link_to fa_icon('times').html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
               <%% end %>
             </td>
           </tr>
