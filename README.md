@@ -42,10 +42,10 @@
 Installation Bootstrap :
 https://github.com/twbs/bootstrap-rubygem
 
-rails g scaffold_controller User first_name:string last_name:string
+`rails g scaffold_controller User first_name:string last_name:string`
 
-rails g erb:scaffold User first_name:string last_name:string
+`rails g erb:scaffold User first_name:string last_name:string`
 
 ##### Database
   
-  rake db:seed:dump EXCLUDE=[]
+`rake db:seed:dump EXCLUDE=[]`

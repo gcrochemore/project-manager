@@ -72,3 +72,5 @@ gem 'simple_form'
 gem 'rails_admin', '~> 1.2'
 
 gem 'seed_dump'
+
+gem 'bcrypt', platforms: :ruby
