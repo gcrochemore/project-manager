@@ -52,7 +52,7 @@ https://github.com/twbs/bootstrap-rubygem
   
 `rake db:seed:dump EXCLUDE=[]`
 
-`rake db:seed:dump models_exclude="User, Role"`
+`rake db:seed:dump models_exclude="User, Role" exclude=[]`
 
 #### Entity
 
