@@ -1,5 +1,3 @@
-
-
 class ProjectBundlesController < ApplicationController
   authorize_resource
   before_action :set_project_bundle, only: [:show, :edit, :update, :destroy]

@@ -1,5 +1,3 @@
-
-
 class ProjectsController < ApplicationController
   authorize_resource
   before_action :set_project, only: [:show, :edit, :update, :destroy]

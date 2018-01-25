@@ -62,4 +62,6 @@ https://github.com/twbs/bootstrap-rubygem
 
 `rails generate scaffold ProjectBundle name:string project:references estimated_time:float`
 
-`rails generate scaffold Task identifier:integer name:string description:text project:references project_bundle:references task:references estimated_time:float`
+`rails generate scaffold TaskType name:text`
+
+`rails generate scaffold Task identifier:integer task_type:references name:string description:text project:references project_bundle:references task:references estimated_time:float`

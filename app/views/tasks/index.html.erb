@@ -8,6 +8,8 @@
 
         <%= f.search_field :identifier_cont, {placeholder: t('activerecord.attributes.task.identifier')} %>
 
+        <%= f.search_field :task_type_cont, {placeholder: t('activerecord.attributes.task.task_type')} %>
+
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.task.name')} %>
 
         <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.task.description')} %>
@@ -38,6 +40,8 @@
     
           <th><%= sort_link(@q, :identifier, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :task_type, default_order: :asc) %></th>
+    
           <th><%= sort_link(@q, :name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :description, default_order: :asc) %></th>
@@ -59,6 +63,8 @@
           <tr>
     
             <td><%= task.identifier %></td>
+    
+            <td><%= task.task_type %></td>
     
             <td><%= task.name %></td>
     
