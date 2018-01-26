@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125105428) do
+ActiveRecord::Schema.define(version: 20180126175820) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 20180125105428) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "task_statuses", force: :cascade do |t|
+    t.text "name"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "task_types", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -56,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180125105428) do
   create_table "tasks", force: :cascade do |t|
     t.integer "identifier"
     t.integer "task_type_id"
+    t.integer "task_status_id"
     t.string "name"
     t.text "description"
     t.integer "project_id"
@@ -67,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180125105428) do
     t.index ["project_bundle_id"], name: "index_tasks_on_project_bundle_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["task_id"], name: "index_tasks_on_task_id"
+    t.index ["task_status_id"], name: "index_tasks_on_task_status_id"
     t.index ["task_type_id"], name: "index_tasks_on_task_type_id"
   end
 

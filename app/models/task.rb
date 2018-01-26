@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :task_type, optional: true
+  belongs_to :task_status, optional: true
   belongs_to :project
   belongs_to :project_bundle, optional: true
   belongs_to :task, optional: true

@@ -3,6 +3,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
     create_table :tasks do |t|
       t.integer :identifier
       t.references :task_type, foreign_key: true
+      t.references :task_status, foreign_key: true
       t.string :name
       t.text :description
       t.references :project, foreign_key: true
