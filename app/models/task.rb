@@ -20,7 +20,7 @@ class Task < ApplicationRecord
     if !self.task.nil?
         self.task.update_estimated_time
         self.task.save
-    else
+    elsif !self.project_bundle.nil?
         self.project_bundle.update_estimated_time
     end
   end

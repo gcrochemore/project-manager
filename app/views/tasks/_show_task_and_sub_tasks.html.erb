@@ -1,19 +1,20 @@
-<div class="row">
-    <div class="col-1">
-        <%= begin_line %>
-        <% if !task.task_type.nil? %>
-            <% css_class = [ 'badge-primary', 'badge-secondary', 'badge-success', 'badge-danger', 'badge-warning', 'badge-info', 'badge-light', 'badge-dark' ] %>
-            <span class="badge <%= css_class[task.task_type.id % 7] %>"><%= task.task_type %></span>
-        <% end %>
+<div class="task-and-sub-task">
+    <div class="row">
+        <div class="col-1">
+            <% if !task.task_type.nil? %>
+                <% css_class = [ 'badge-primary', 'badge-secondary', 'badge-success', 'badge-danger', 'badge-warning', 'badge-info', 'badge-light', 'badge-dark' ] %>
+                <span class="badge <%= css_class[task.task_type.id % 7] %>"><%= task.task_type %></span>
+            <% end %>
+        </div>
+        <div class="col-10">
+            <%= task.name %>
+        </div>
+        <div class="col-1 text-right">
+            <strong><%= number_with_precision(task.estimated_time, precision: 2) %></strong>
+        </div>
     </div>
-    <div class="col-10">
-        <%= task.name %>
-    </div>
-    <div class="col-1 text-right">
-        <strong><%= task.estimated_time %></strong>
-    </div>
-</div>
 
-<% task.tasks.each do |sub_task| %>
-    <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: (( defined? begin_time) ? '' : begin_line) + '-' %>
-<% end %>
+    <% task.tasks.each do |sub_task| %>
+        <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: (( defined? begin_time) ? '' : begin_line) + '-' %>
+    <% end %>
+</div>

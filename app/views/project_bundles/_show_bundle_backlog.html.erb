@@ -10,7 +10,7 @@
 
     <% @project_bundle.tasks.without_parent_task.each do |task| %>
         <tr>
-            <th rowspan="2" class="align-middle">
+            <th rowspan="2" class="align-middle text-center">
                 <% if !task.project.bug_tracker.nil? %>
                     <%= link_to task.identifier.to_s, task.project.bug_tracker + task.identifier.to_s, target: "_blank" %>
                 <% else %>
@@ -18,7 +18,7 @@
                 <% end %>
             </th>
             <th><%= task.name %></th>
-            <th rowspan="2" class="align-middle text-center"><%= task.estimated_time %></th>
+            <th rowspan="2" class="align-middle text-center"><%= number_with_precision(task.estimated_time, precision: 2) %></th>
         </tr>
         <tr>
             <td>

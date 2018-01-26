@@ -18,3 +18,17 @@
 @import "bootstrap";
 
 @import "font-awesome";
+
+.task-and-sub-task {
+  .task-and-sub-task {
+    opacity: 0.75;
+    filter:alpha(opacity=0.75*100);
+    -moz-opacity:0.75;
+
+    .task-and-sub-task {
+      opacity: 0.5;
+      filter:alpha(opacity=0.5*100);
+      -moz-opacity:0.5;
+    }
+  }
+}
