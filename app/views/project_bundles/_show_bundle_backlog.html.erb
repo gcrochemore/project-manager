@@ -17,8 +17,14 @@
                     <%= task.identifier %>
                 <% end %>
             </th>
-            <th><%= task.name %></th>
-            <th rowspan="2" class="align-middle text-center"><%= number_with_precision(task.estimated_time, precision: 2) %></th>
+            <th>
+                <%= show_task_type(task).html_safe %>
+                <%= task.name %>
+                <%= show_task_status(task).html_safe %>
+            </th>
+            <th rowspan="2" class="align-middle text-center">
+                <%= number_with_precision(task.estimated_time, precision: 2) %>
+            </th>
         </tr>
         <tr>
             <td>

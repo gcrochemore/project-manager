@@ -8,6 +8,7 @@ class Task < ApplicationRecord
 
   before_save :update_estimated_time
   after_save :update_parent_estimated_time
+  after_save :update_parent_task_status
 
   scope :without_parent_task, -> { where(task: nil) }
 
@@ -23,6 +24,19 @@ class Task < ApplicationRecord
         self.task.save
     elsif !self.project_bundle.nil?
         self.project_bundle.update_estimated_time
+    end
+  end
+
+  def update_task_status
+    if !self.tasks.empty?
+        self.task_status = self.tasks.first.task_status
+    end
+  end
+
+  def update_parent_task_status
+    if !self.task.nil?
+        self.task.update_task_status
+        self.task.save
     end
   end
 end

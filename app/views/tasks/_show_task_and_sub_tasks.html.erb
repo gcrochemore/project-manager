@@ -1,13 +1,11 @@
 <div class="task-and-sub-task">
     <div class="row">
         <div class="col-1">
-            <% if !task.task_type.nil? %>
-                <% css_class = [ 'badge-primary', 'badge-secondary', 'badge-success', 'badge-danger', 'badge-warning', 'badge-info', 'badge-light', 'badge-dark' ] %>
-                <span class="badge <%= css_class[task.task_type.id % 7] %>"><%= task.task_type %></span>
-            <% end %>
+            <%= show_task_type(task).html_safe %>
         </div>
         <div class="col-10">
             <%= task.name %>
+            <%= show_task_status(task).html_safe %>
         </div>
         <div class="col-1 text-right">
             <strong><%= number_with_precision(task.estimated_time, precision: 2) %></strong>

@@ -1,19 +1,3 @@
-User::HABTM_Roles.create!([
-  {user_id: 1, role_id: 1},
-  {user_id: 1, role_id: 2},
-  {user_id: 2, role_id: 3},
-  {user_id: 3, role_id: 3},
-  {user_id: 4, role_id: 3},
-  {user_id: 5, role_id: 3}
-])
-Role::HABTM_Users.create!([
-  {user_id: 1, role_id: 1},
-  {user_id: 1, role_id: 2},
-  {user_id: 2, role_id: 3},
-  {user_id: 3, role_id: 3},
-  {user_id: 4, role_id: 3},
-  {user_id: 5, role_id: 3}
-])
 Organization.create!([
   {id: 1, name: "TRSB Rouen", created_at: "2018-01-25 10:58:47", updated_at: "2018-01-25 10:58:47"}
 ])
@@ -69,8 +53,8 @@ Task.create!([
   {id: 40, identifier: 51146, task_type_id: nil, task_status_id: nil, name: "COT.14.20 : Un utilisateur peut télécharger un guide de cotation", description: "_Exigence_\r\n", project_id: 1, project_bundle_id: 1, task_id: nil, estimated_time: 2.5, created_at: "2018-01-26 14:39:09", updated_at: "2018-01-26 18:08:59"},
   {id: 41, identifier: 51204, task_type_id: 1, task_status_id: nil, name: "API - Upload du guide cotation", description: "", project_id: 1, project_bundle_id: 2, task_id: 40, estimated_time: 1.5, created_at: "2018-01-26 14:40:18", updated_at: "2018-01-26 14:41:32"},
   {id: 42, identifier: 51206, task_type_id: 2, task_status_id: nil, name: "APP - Téléchargement du guide cotation", description: "Développement\r\n", project_id: 1, project_bundle_id: nil, task_id: 40, estimated_time: 1.0, created_at: "2018-01-26 14:40:54", updated_at: "2018-01-26 14:40:54"},
-  {id: 43, identifier: 50880, task_type_id: nil, task_status_id: nil, name: "NOT.19.4 : Un utilisateur peut remonter un bug ou son avis via Usabilla", description: "_Exigence_\r\n", project_id: 1, project_bundle_id: 1, task_id: nil, estimated_time: 3.0, created_at: "2018-01-26 14:42:53", updated_at: "2018-01-26 14:44:48"},
-  {id: 44, identifier: 50970, task_type_id: 2, task_status_id: nil, name: "APP : remonter un bug ou son avis via Usabilla", description: "Développement\r\n", project_id: 1, project_bundle_id: nil, task_id: 43, estimated_time: 3.0, created_at: "2018-01-26 14:43:57", updated_at: "2018-01-26 14:44:47"},
+  {id: 43, identifier: 50880, task_type_id: nil, task_status_id: 11, name: "NOT.19.4 : Un utilisateur peut remonter un bug ou son avis via Usabilla", description: "_Exigence_\r\n", project_id: 1, project_bundle_id: 1, task_id: nil, estimated_time: 3.0, created_at: "2018-01-26 14:42:53", updated_at: "2018-01-26 19:04:20"},
+  {id: 44, identifier: 50970, task_type_id: 2, task_status_id: 11, name: "APP : remonter un bug ou son avis via Usabilla", description: "Développement\r\n", project_id: 1, project_bundle_id: nil, task_id: 43, estimated_time: 3.0, created_at: "2018-01-26 14:43:57", updated_at: "2018-01-26 19:04:20"},
   {id: 45, identifier: 50752, task_type_id: nil, task_status_id: nil, name: "Visualisation des photos - il manque la date et le nom de l'utilisateur ayant pris la photo", description: "_Anomalie_\r\n", project_id: 1, project_bundle_id: 1, task_id: nil, estimated_time: 2.5, created_at: "2018-01-26 14:47:07", updated_at: "2018-01-26 18:08:59"},
   {id: 46, identifier: 50971, task_type_id: 2, task_status_id: nil, name: "APP - Renvoyer la date et le nom de l'utilisateur ayant pris la photo", description: "Développement\r\n", project_id: 1, project_bundle_id: nil, task_id: 45, estimated_time: 0.5, created_at: "2018-01-26 14:50:27", updated_at: "2018-01-26 14:50:27"},
   {id: 47, identifier: 50972, task_type_id: 2, task_status_id: nil, name: "APP - Afficher la date et le nom de l'utilisateur ayant pris la photo", description: "", project_id: 1, project_bundle_id: nil, task_id: 45, estimated_time: 0.5, created_at: "2018-01-26 14:53:37", updated_at: "2018-01-26 14:54:34"},
