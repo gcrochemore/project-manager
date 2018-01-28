@@ -40,4 +40,12 @@ RailsAdmin.config do |config|
   end
 
   config.parent_controller = 'ApplicationController'
+
+  config.model 'Task' do
+    object_label_method :label_for_select_rails_admin
+  end
+
+  config.model 'Assignment' do
+    object_label_method :label_for_select_rails_admin
+  end
 end

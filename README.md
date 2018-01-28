@@ -66,4 +66,10 @@ https://github.com/twbs/bootstrap-rubygem
 
 `rails generate scaffold TaskStatus name:text order:integer`
 
-`rails generate scaffold Task identifier:integer task_type:references task_status:references name:string description:text project:references project_bundle:references task:references estimated_time:float`
+`rails generate scaffold Task identifier:integer task_type:references task_status:references name:string description:text project:references project_bundle:references task:references estimated_time:float consumed_time:float remaining_time:float planned_time:float begin_date:date end_date:date`
+
+`rails generate scaffold Delivery name:text date:date description:text`
+
+`rails generate scaffold Assignment date:date user:references task:references time:float comment:text consumed:boolean`
+
+

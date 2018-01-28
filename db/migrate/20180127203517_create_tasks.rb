@@ -10,6 +10,11 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.references :project_bundle, foreign_key: true
       t.references :task, foreign_key: true
       t.float :estimated_time
+      t.float :consumed_time
+      t.float :remaining_time
+      t.float :planned_time
+      t.date :begin_date
+      t.date :end_date
 
       t.timestamps
     end

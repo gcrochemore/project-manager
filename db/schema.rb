@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126175820) do
+ActiveRecord::Schema.define(version: 20180127203734) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.date "date"
+    t.integer "user_id"
+    t.integer "task_id"
+    t.float "time"
+    t.text "comment"
+    t.boolean "consumed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.text "name"
+    t.date "date"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -70,6 +91,11 @@ ActiveRecord::Schema.define(version: 20180126175820) do
     t.integer "project_bundle_id"
     t.integer "task_id"
     t.float "estimated_time"
+    t.float "consumed_time"
+    t.float "remaining_time"
+    t.float "planned_time"
+    t.date "begin_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_bundle_id"], name: "index_tasks_on_project_bundle_id"

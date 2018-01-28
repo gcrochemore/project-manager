@@ -20,10 +20,13 @@
 @import "font-awesome";
 
 .task-and-sub-task {
+  background-color: gainsboro;
+  color: black;
   .task-and-sub-task {
     opacity: 0.75;
     filter:alpha(opacity=0.75*100);
     -moz-opacity:0.75;
+    background-color: whitesmoke;
 
     .task-and-sub-task {
       opacity: 0.5;
@@ -31,4 +34,12 @@
       -moz-opacity:0.5;
     }
   }
+}
+
+.estimated-time-lower-than-consumed-and-planned-time{
+  color: red;
+}
+
+.estimated-time-gretter-than-consumed-and-planned-time{
+  color: green;
 }

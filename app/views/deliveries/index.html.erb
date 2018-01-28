@@ -1,0 +1,54 @@
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @deliveries.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.delivery.name')} %>
+        <%= f.search_field :date_cont, {placeholder: t('activerecord.attributes.delivery.date')} %>
+        <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.delivery.description')} %>
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Delivery %>
+        <%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+              <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :date, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :description, default_order: :asc) %></th>
+              <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @deliveries.each do |delivery| %>
+          <tr>
+                <td><%= delivery.name %></td>
+                <td><%= delivery.date %></td>
+                <td><%= delivery.description %></td>
+                <td>
+              <%= link_to fa_icon('eye').html_safe, delivery %>
+              <% if can? :edit, Delivery %>
+                <%= link_to fa_icon('pencil').html_safe, edit_delivery_path(delivery) %>
+              <% end %>
+              <% if can? :destroy, Delivery %>
+                <%= link_to fa_icon('times').html_safe, delivery, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @deliveries %>
+  </div>
+</div>

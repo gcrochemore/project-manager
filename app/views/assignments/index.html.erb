@@ -1,0 +1,63 @@
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @assignments.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :date_cont, {placeholder: t('activerecord.attributes.assignment.date')} %>
+        <%= f.search_field :user_cont, {placeholder: t('activerecord.attributes.assignment.user')} %>
+        <%= f.search_field :task_cont, {placeholder: t('activerecord.attributes.assignment.task')} %>
+        <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.assignment.time')} %>
+        <%= f.search_field :comment_cont, {placeholder: t('activerecord.attributes.assignment.comment')} %>
+        <%= f.search_field :consumed_cont, {placeholder: t('activerecord.attributes.assignment.consumed')} %>
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Assignment %>
+        <%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+              <th><%= sort_link(@q, :date, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :user, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :task, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :time, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :comment, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :consumed, default_order: :asc) %></th>
+              <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @assignments.each do |assignment| %>
+          <tr>
+                <td><%= assignment.date %></td>
+                <td><%= assignment.user %></td>
+                <td><%= assignment.task %></td>
+                <td><%= assignment.time %></td>
+                <td><%= assignment.comment %></td>
+                <td><%= assignment.consumed %></td>
+                <td>
+              <%= link_to fa_icon('eye').html_safe, assignment %>
+              <% if can? :edit, Assignment %>
+                <%= link_to fa_icon('pencil').html_safe, edit_assignment_path(assignment) %>
+              <% end %>
+              <% if can? :destroy, Assignment %>
+                <%= link_to fa_icon('times').html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @assignments %>
+  </div>
+</div>

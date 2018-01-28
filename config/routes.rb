@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :task_statuses, :tasks, :project_bundles, :project_parts, :projects, :organizations, :task_types
+  resources :assignments, :deliveries, :task_statuses, :tasks, :project_bundles, :project_parts, :projects,
+    :organizations, :task_types
   root 'home#index'
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

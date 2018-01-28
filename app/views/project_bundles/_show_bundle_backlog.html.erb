@@ -1,33 +1,49 @@
-<table class="table table-striped table-sm">
+<table class="table table-striped table-sm table-dark">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Temps estimé</th>
+            <th>Tache</th>
+            <th>Estimé</th>
+            <th>Consommé</th>
+            <th>Planifié</th>
+            <th>RAF</th>
+            <th>Début</th>
+            <th>Fin</th>
         </tr>
     </thead>
     <tbody>
 
-    <% @project_bundle.tasks.without_parent_task.each do |task| %>
+    <% project_bundle.tasks.without_parent_task.each do |task| %>
         <tr>
-            <th rowspan="2" class="align-middle text-center">
-                <% if !task.project.bug_tracker.nil? %>
-                    <%= link_to task.identifier.to_s, task.project.bug_tracker + task.identifier.to_s, target: "_blank" %>
-                <% else %>
-                    <%= task.identifier %>
-                <% end %>
-            </th>
             <th>
+                <%= show_task_identifier(task).html_safe %>
                 <%= show_task_type(task).html_safe %>
                 <%= task.name %>
                 <%= show_task_status(task).html_safe %>
             </th>
-            <th rowspan="2" class="align-middle text-center">
+            <th class="align-middle text-center">
                 <%= number_with_precision(task.estimated_time, precision: 2) %>
+            </th>
+            <th class="align-middle text-center">
+                <%= number_with_precision(task.consumed_time, precision: 2) %>
+            </th>
+            <th class="align-middle text-center">
+                <%= number_with_precision(task.planned_time, precision: 2) %>
+            </th>
+            <th class="align-middle text-center">
+                <%= number_with_precision(task.remaining_time, precision: 2) %>
+            </th>
+            <th class="align-middle text-center">
+                <%= task.begin_date ? task.begin_date.strftime("%d/%m") : '' %>
+            </th>
+            <th class="align-middle text-center">
+                <%= task.end_date ? task.end_date.strftime("%d/%m") : '' %>
+            </th>
+            <th rowspan="2" class="align-middle text-center">
+                O
             </th>
         </tr>
         <tr>
-            <td>
+            <td colspan="7">
             <% if !task.tasks.empty? %>
                 <% task.tasks.each do |sub_task| %>
                     <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: '' %>

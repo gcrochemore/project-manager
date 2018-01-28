@@ -45,5 +45,30 @@
   <%= @task.estimated_time %>
 </p>
 
+<p>
+  <strong>Consumed time:</strong>
+  <%= @task.consumed_time %>
+</p>
+
+<p>
+  <strong>Remaining time:</strong>
+  <%= @task.remaining_time %>
+</p>
+
+<p>
+  <strong>Planned time:</strong>
+  <%= @task.planned_time %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @task.begin_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @task.end_date %>
+</p>
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

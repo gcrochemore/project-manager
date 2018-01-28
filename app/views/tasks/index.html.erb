@@ -6,14 +6,19 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
         <%= f.search_field :identifier_cont, {placeholder: t('activerecord.attributes.task.identifier')} %>
-        <%= f.search_field :task_type_cont, {placeholder: t('activerecord.attributes.task.task_type')} %>
-        <%= f.search_field :task_status_cont, {placeholder: t('activerecord.attributes.task.task_status')} %>
+        <%= f.search_field :task_type_name_cont, {placeholder: t('activerecord.attributes.task.task_type')} %>
+        <%= f.search_field :task_status_name_cont, {placeholder: t('activerecord.attributes.task.task_status')} %>
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.task.name')} %>
         <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.task.description')} %>
-        <%= f.search_field :project_cont, {placeholder: t('activerecord.attributes.task.project')} %>
-        <%= f.search_field :project_bundle_cont, {placeholder: t('activerecord.attributes.task.project_bundle')} %>
-        <%= f.search_field :task_cont, {placeholder: t('activerecord.attributes.task.task')} %>
+        <%= f.search_field :project_name_cont, {placeholder: t('activerecord.attributes.task.project')} %>
+        <%= f.search_field :project_bundle_name_cont, {placeholder: t('activerecord.attributes.task.project_bundle')} %>
+        <%= f.search_field :task_name_cont, {placeholder: t('activerecord.attributes.task.task')} %>
         <%= f.search_field :estimated_time_cont, {placeholder: t('activerecord.attributes.task.estimated_time')} %>
+        <%= f.search_field :consumed_time_cont, {placeholder: t('activerecord.attributes.task.consumed_time')} %>
+        <%= f.search_field :remaining_time_cont, {placeholder: t('activerecord.attributes.task.remaining_time')} %>
+        <%= f.search_field :planned_time_cont, {placeholder: t('activerecord.attributes.task.planned_time')} %>
+        <%= f.search_field :begin_date_cont, {placeholder: t('activerecord.attributes.task.begin_date')} %>
+        <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.task.end_date')} %>
         <br>
         <br>
         <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
@@ -30,14 +35,19 @@
       <thead>
         <tr>
               <th><%= sort_link(@q, :identifier, default_order: :asc) %></th>
-              <th><%= sort_link(@q, :task_type, default_order: :asc) %></th>
-              <th><%= sort_link(@q, :task_status, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :task_type_name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :task_status_name, default_order: :asc) %></th>
               <th><%= sort_link(@q, :name, default_order: :asc) %></th>
               <th><%= sort_link(@q, :description, default_order: :asc) %></th>
-              <th><%= sort_link(@q, :project, default_order: :asc) %></th>
-              <th><%= sort_link(@q, :project_bundle, default_order: :asc) %></th>
-              <th><%= sort_link(@q, :task, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :project_name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :project_bundle_name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :task_name, default_order: :asc) %></th>
               <th><%= sort_link(@q, :estimated_time, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :consumed_time, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :remaining_time, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :planned_time, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :begin_date, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
               <th class="col-xs-1"></th>
         </tr>
       </thead>
@@ -54,6 +64,11 @@
                 <td><%= task.project_bundle %></td>
                 <td><%= task.task %></td>
                 <td><%= task.estimated_time %></td>
+                <td><%= task.consumed_time %></td>
+                <td><%= task.remaining_time %></td>
+                <td><%= task.planned_time %></td>
+                <td><%= task.begin_date %></td>
+                <td><%= task.end_date %></td>
                 <td>
               <%= link_to fa_icon('eye').html_safe, task %>
               <% if can? :edit, Task %>
