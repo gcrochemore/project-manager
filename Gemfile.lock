@@ -203,6 +203,8 @@ GEM
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
+    simple_calendar (2.2.5)
+      rails (>= 3.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -262,6 +264,7 @@ DEPENDENCIES
   rspec-rails (= 2.8)
   sass-rails (~> 5.0)
   seed_dump
+  simple_calendar (~> 2.0)
   simple_form
   sqlite3
   turbolinks (~> 5)

@@ -64,4 +64,8 @@ class Task < ApplicationRecord
   def label_for_select_rails_admin
     self.identifier.to_s + ' ' + self.name.to_s
   end
+
+  def to_s
+    self.identifier.to_s + ' ' + self.name.to_s
+  end
 end

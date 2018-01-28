@@ -74,3 +74,5 @@ gem 'rails_admin', '~> 1.2'
 gem 'seed_dump'
 
 gem 'bcrypt', platforms: :ruby
+
+gem "simple_calendar", "~> 2.0"

@@ -7,6 +7,8 @@ class Assignment < ApplicationRecord
   scope :first_on_task, -> { date_not_null.order(:date).first }
   scope :last_on_task, -> { date_not_null.order('date DESC').first }
   scope :date_not_null, -> { where('date IS NOT NULL') }
+  scope :order_by_date_desc, -> { order('date DESC') }
+  scope :order_by_time_desc, -> { order('time DESC') }
 
   after_save :update_task_time
 
