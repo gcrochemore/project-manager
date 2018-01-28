@@ -6,6 +6,7 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.delivery.name')} %>
+        <%= f.search_field :project_bundle_name_cont, {placeholder: t('activerecord.attributes.delivery.project_bundle')} %>
         <%= f.search_field :date_cont, {placeholder: t('activerecord.attributes.delivery.date')} %>
         <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.delivery.description')} %>
         <br>
@@ -24,6 +25,7 @@
       <thead>
         <tr>
               <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :project_bundle_name, default_order: :asc) %></th>
               <th><%= sort_link(@q, :date, default_order: :asc) %></th>
               <th><%= sort_link(@q, :description, default_order: :asc) %></th>
               <th class="col-xs-1"></th>
@@ -34,6 +36,7 @@
         <% @deliveries.each do |delivery| %>
           <tr>
                 <td><%= delivery.name %></td>
+                <td><%= delivery.project_bundle %></td>
                 <td><%= delivery.date %></td>
                 <td><%= delivery.description %></td>
                 <td>

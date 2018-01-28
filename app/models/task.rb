@@ -65,6 +65,10 @@ class Task < ApplicationRecord
     self.identifier.to_s + ' ' + self.name.to_s
   end
 
+  def not_finished
+    return (self.end_date ? (self.end_date > DateTime.now ? true : false) : false)
+  end
+
   def to_s
     self.identifier.to_s + ' ' + self.name.to_s
   end

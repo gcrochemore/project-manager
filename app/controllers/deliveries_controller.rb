@@ -50,6 +50,6 @@ class DeliveriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def delivery_params
-      params.require(:delivery).permit(:name, :date, :description)
+      params.require(:delivery).permit(:name, :project_bundle_id, :date, :description)
     end
 end

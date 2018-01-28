@@ -22,6 +22,9 @@
 .task-and-sub-task {
   background-color: gainsboro;
   color: black;
+  .task-not-finish{
+    text-decoration:line-through;
+  }
   .task-and-sub-task {
     opacity: 0.75;
     filter:alpha(opacity=0.75*100);

@@ -9,8 +9,10 @@ class Ability
     if user.has_role? 'Administrateur'
        can :manage, :all
        can :access, :rails_admin
-    else
-       can :read, :all
+    end
+
+    if user.has_role? 'Developpeur'
+       can :read, User, :id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user
