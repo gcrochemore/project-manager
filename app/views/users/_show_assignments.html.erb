@@ -8,8 +8,8 @@
                <% user_day_assignment.assignments.each do |assignment| %>
                    <div class="row assignment<%= !assignment.consumed ? ' show-assignment-not-consumed' : '' %>">
                        <div class="col-12">
-                            <%= assignment.task %>
                             <span class="badge badge-pill badge-info"><%= assignment.time %></span>
+                            <%= assignment.task %>
                         </div>
                    </div>
                <% end %>

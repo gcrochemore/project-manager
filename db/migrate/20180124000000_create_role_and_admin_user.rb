@@ -30,5 +30,20 @@ class CreateRoleAndAdminUser < ActiveRecord::Migration[5.1]
     user.skip_confirmation!
     user.save!
     user.add_role "Developpeur"
+
+    user = User.new({id: 6, email: "leonard.messier@trsb.nett", password:"password", password_confirmation: "password", confirmation_token: "yj6UY5Eds25RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", first_name: "Leonard", last_name: "Messier"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "Developpeur"
+
+    user = User.new({id: 7, email: "thomas.cumond@trsb.nett", password:"password", password_confirmation: "password", confirmation_token: "yj6UY5Evf25RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", first_name: "Thomas", last_name: "Cumond"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "Developpeur"
+
+    user = User.new({id: 8, email: "gilles.danjou@trsb.nett", password:"password", password_confirmation: "password", confirmation_token: "yj6UY5Ecd35RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", first_name: "Gilles", last_name: "Danjou"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "Developpeur"
   end
 end

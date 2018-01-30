@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @project.organization %>
+</p>
+
+<h3>Total : <strong><%= @project_month_assignment.total_time %></strong></h3>
+
+<div id="accordion">
+    <% @project_month_assignment.project_month_bundles_assignments.each_with_index do |project_month_bundle_assignments, index| %>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>">
+                <strong><%= project_month_bundle_assignments.project_bundle ? project_month_bundle_assignments.project_bundle.name : '<i>Pas de lot</i>'.html_safe %> : <%= project_month_bundle_assignments.total_time.round(2) %></strong><br>
+            </a>
+        </div>
+        <div id="collapse<%= index %>" class="collapse">
+          <div class="card-body">
+            <% project_month_bundle_assignments.assignments_by_users.each do |assignments_by_user| %>
+                <%= assignments_by_user[0].to_s %> <strong><%= assignments_by_user[1].round(2).to_s %></strong><br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<%= month_calendar(attribute: :date, events: @project_month_assignment.project_day_assignments) do |date, user_day_assignments| %>
+     <% user_day_assignments.each do |user_day_assignment| %>
+        <div class="row show-assignment-user-day-assignment">
+           <div class="col-12 total-time">
+              <%= show_total_time(user_day_assignment).html_safe %>
+           </div>
+          <div class="col-12 assignments">
+               <% user_day_assignment.assignments.each do |assignment| %>
+                   <div class="row assignment<%= !assignment.consumed ? ' show-assignment-not-consumed' : '' %>">
+                       <div class="col-12">
+                            <span class="badge badge-pill badge-info"><%= assignment.time %></span>
+                            <%= assignment.task %>
+                        </div>
+                   </div>
+               <% end %>
+           </div>
+        </div>
+     <% end %>
+<% end %>
+
+<%= link_to 'Back', project_path(@project) %>

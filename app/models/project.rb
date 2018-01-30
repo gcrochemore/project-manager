@@ -4,11 +4,19 @@ class Project < ApplicationRecord
   has_many :project_bundles
 
   def assignments_by_user user
-    Assignment.where(user: user, task: [self.tasks.pluck(:id)])
+    self.assignments.where(user: user)
+  end
+
+  def assignments_without_project_bundle
+    self.assignments.where('task_id NOT IN (?)', self.all_project_bundles_tasks.pluck(:id))
   end
 
   def assignments_without_project_bundle_by_user user
-    Assignment.where('task_id IN (?) AND task_id NOT IN (?) AND user_id = ?', self.tasks.pluck(:id), self.all_project_bundles_tasks.pluck(:id), user.id)
+    self.assignments_without_project_bundle.where(user: user.id)
+  end
+
+  def assignments
+    Assignment.where(task: [self.tasks.pluck(:id)])
   end
 
   def all_project_bundles_tasks

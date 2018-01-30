@@ -19,8 +19,12 @@ class ProjectBundle < ApplicationRecord
     self.tasks.without_parent_task.sum(:remaining_time)
   end
 
+  def assignments
+    Assignment.where(task_id: [self.all_bundle_tasks.pluck(:id)])
+  end
+
   def assignments_by_user user
-    Assignment.where(task_id: [self.all_bundle_tasks.pluck(:id)], user: user)
+    self.assignments.where(user: user)
   end
 
   def all_bundle_tasks

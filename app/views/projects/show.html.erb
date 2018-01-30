@@ -15,7 +15,7 @@
   <%= @project.bug_tracker %>
 </p>
 
-<%= render 'project_bundles/show_bundle_backlog', project_bundle: @project %>
-
+<%= link_to 'Backlog', show_backlog_project_path %> |
+<%= link_to 'Planning', show_assignments_project_path %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

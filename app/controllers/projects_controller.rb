@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   authorize_resource
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :show_backlog, :show_assignments]
   # GET /projects
   def index
     @q = Project.ransack(params[:q])
@@ -8,6 +8,19 @@ class ProjectsController < ApplicationController
   end
   # GET /projects/1
   def show
+
+  end
+
+  def show_assignments
+    start_date = (params[:start_date] ? DateTime.parse(params[:start_date]) : DateTime.now)
+    year = start_date.strftime('%Y').to_i
+    month = start_date.strftime('%m').to_i
+
+    @project_month_assignment = ProjectMonthAssignments.new(project: @project, year: year, month: month)
+  end
+
+  def show_backlog
+
   end
 
   # GET /projects/new

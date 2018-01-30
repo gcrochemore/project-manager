@@ -6,12 +6,24 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
         <%= f.search_field :identifier_cont, {placeholder: t('activerecord.attributes.task.identifier')} %>
-        <%= f.search_field :task_type_name_cont, {placeholder: t('activerecord.attributes.task.task_type')} %>
-        <%= f.search_field :task_status_name_cont, {placeholder: t('activerecord.attributes.task.task_status')} %>
+
+        <br>
+        <%= t('activerecord.attributes.task.task_type') %>
+        <%= f.collection_select :task_type_id_eq, TaskType.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+
+        <%= t('activerecord.attributes.task.task_status') %>
+        <%= f.collection_select :task_status_id_eq, TaskStatus.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.task.name')} %>
         <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.task.description')} %>
-        <%= f.search_field :project_name_cont, {placeholder: t('activerecord.attributes.task.project')} %>
-        <%= f.search_field :project_bundle_name_cont, {placeholder: t('activerecord.attributes.task.project_bundle')} %>
+
+        <br>
+        <%= t('activerecord.attributes.task.project') %>
+        <%= f.collection_select :project_id_eq, Project.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+
+        <%= t('activerecord.attributes.task.project_bundle') %>
+        <%= f.collection_select :project_bundle_id_eq, ProjectBundle.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+
         <%= f.search_field :task_name_cont, {placeholder: t('activerecord.attributes.task.task')} %>
         <%= f.search_field :estimated_time_cont, {placeholder: t('activerecord.attributes.task.estimated_time')} %>
         <%= f.search_field :consumed_time_cont, {placeholder: t('activerecord.attributes.task.consumed_time')} %>
@@ -55,7 +67,7 @@
       <tbody>
         <% @tasks.each do |task| %>
           <tr>
-                <td><%= task.identifier %></td>
+                <td><%= show_task_identifier(task).html_safe %></td>
                 <td><%= task.task_type %></td>
                 <td><%= task.task_status %></td>
                 <td><%= task.name %></td>
