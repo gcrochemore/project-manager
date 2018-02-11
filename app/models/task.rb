@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  include ActiveModel::Dirty
+
   belongs_to :task_type, optional: true
   belongs_to :task_status, optional: true
   belongs_to :project
@@ -38,11 +40,28 @@ class Task < ApplicationRecord
   end
 
   def update_parent_time
-    if !self.task.nil?
-        self.task.update_time
-        self.task.save
-    elsif !self.project_bundle.nil?
-        self.project_bundle.update_estimated_time
+    if task_id_changed?
+        if !task_id_was.nil?
+            task_was = Task.find(task_id_was)
+            task_was.update_time
+            task_was.save
+        end
+        if !self.task.nil?
+            self.task.update_time
+            self.task.save
+        end
+    end
+
+    if project_bundle_id_changed?
+        if !project_bundle_id_was.nil?
+            project_bundle_was = ProjectBundle.find(project_bundle_id_was)
+            project_bundle_was.update_estimated_time
+            project_bundle_was.save
+        end
+        if !self.project_bundle.nil?
+            self.project_bundle.update_estimated_time
+            self.project_bundle.save
+        end
     end
   end
 
