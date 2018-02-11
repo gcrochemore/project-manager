@@ -33,6 +33,12 @@
           <th><%= sort_link(@q, :project, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :estimated_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :planned_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :consumed_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :remaining_time, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -47,6 +53,12 @@
             <td><%= project_bundle.project %></td>
     
             <td><%= project_bundle.estimated_time %></td>
+
+            <td><%= project_bundle.planned_time %></td>
+
+            <td><%= project_bundle.consumed_time %></td>
+
+            <td><%= project_bundle.remaining_time %></td>
     
             <td>
               <%= link_to fa_icon('eye').html_safe, project_bundle %>
