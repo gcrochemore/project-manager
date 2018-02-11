@@ -52,6 +52,10 @@
 
   }
   .assignments{
+    .user{
+      font-size: 0.8em;
+      font-weight: bold;
+    }
     .show-assignment-not-consumed{
       opacity: 0.75;
       filter:alpha(opacity=0.75*100);
