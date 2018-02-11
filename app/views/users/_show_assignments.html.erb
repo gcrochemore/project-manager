@@ -1,0 +1,27 @@
+<%= month_calendar(attribute: :date, events: user_month_assignment.user_day_assignments) do |date, user_day_assignments| %>
+     <% user_day_assignments.each do |user_day_assignment| %>
+        <div class="row show-assignment-user-day-assignment">
+           <div class="col-12 total-time">
+              <%= show_total_time(user_day_assignment).html_safe %>
+           </div>
+          <div class="col-12 assignments">
+               <% user_day_assignment.assignments.each do |assignment| %>
+                   <div class="row assignment<%= !assignment.consumed ? ' show-assignment-not-consumed' : '' %>">
+                       <div class="col-12">
+                            <span class="badge badge-pill badge-info"><%= assignment.time %></span>
+                            <%= assignment.task %>
+                        </div>
+                   </div>
+               <% end %>
+           </div>
+        </div>
+     <% end %>
+<% end %>
+
+Total : <%= user_month_assignment.total_time %>
+<% user_month_assignment.user_month_projects_assignments.each do |user_month_project_assignment| %>
+     <h4><%= user_month_project_assignment.project.name %> <%= user_month_project_assignment.total_time %></h4>
+     <% user_month_project_assignment.user_month_project_bundles_assignments.each do |user_month_project_bundle_assignment| %>
+         - <%= user_month_project_bundle_assignment.project_bundle ? user_month_project_bundle_assignment.project_bundle.name : '<i>Pas de lot</i>'.html_safe %> : <strong><%= user_month_project_bundle_assignment.total_time %></strong><br>
+     <% end %>
+<% end %>

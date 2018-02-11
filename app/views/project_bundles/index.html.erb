@@ -1,0 +1,78 @@
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @project_bundles.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.project_bundle.name')} %>
+
+        <%= f.search_field :project_name_cont, {placeholder: t('activerecord.attributes.project_bundle.project')} %>
+
+        <%= f.search_field :estimated_time_cont, {placeholder: t('activerecord.attributes.project_bundle.estimated_time')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, ProjectBundle %>
+        <%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :project, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :estimated_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :planned_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :consumed_time, default_order: :asc) %></th>
+
+          <th><%= sort_link(@q, :remaining_time, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @project_bundles.each do |project_bundle| %>
+          <tr>
+    
+            <td><%= project_bundle.name %></td>
+    
+            <td><%= project_bundle.project %></td>
+    
+            <td><%= project_bundle.estimated_time %></td>
+
+            <td><%= project_bundle.planned_time %></td>
+
+            <td><%= project_bundle.consumed_time %></td>
+
+            <td><%= project_bundle.remaining_time %></td>
+    
+            <td>
+              <%= link_to fa_icon('eye').html_safe, project_bundle %>
+              <% if can? :edit, ProjectBundle %>
+                <%= link_to fa_icon('pencil').html_safe, edit_project_bundle_path(project_bundle) %>
+              <% end %>
+              <% if can? :destroy, ProjectBundle %>
+                <%= link_to fa_icon('times').html_safe, project_bundle, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @project_bundles %>
+  </div>
+</div>

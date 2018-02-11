@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identifier:</strong>
+  <%= @task.identifier %>
+</p>
+
+<p>
+  <strong>Task type:</strong>
+  <%= @task.task_type %>
+</p>
+
+<p>
+  <strong>Task status:</strong>
+  <%= @task.task_status %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @task.project %>
+</p>
+
+<p>
+  <strong>Project bundle:</strong>
+  <%= @task.project_bundle %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @task.task %>
+</p>
+
+<p>
+  <strong>Estimated time:</strong>
+  <%= @task.estimated_time %>
+</p>
+
+<p>
+  <strong>Consumed time:</strong>
+  <%= @task.consumed_time %>
+</p>
+
+<p>
+  <strong>Remaining time:</strong>
+  <%= @task.remaining_time %>
+</p>
+
+<p>
+  <strong>Planned time:</strong>
+  <%= @task.planned_time %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @task.begin_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @task.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

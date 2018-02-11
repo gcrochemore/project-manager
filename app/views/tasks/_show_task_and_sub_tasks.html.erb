@@ -1,0 +1,24 @@
+<div class="task-and-sub-task">
+    <div class="row">
+        <div class="col-1">
+            <%= show_task_type(task).html_safe %>
+        </div>
+        <div class="col-8">
+            <%= begin_line %>
+            <%= show_task_identifier(task).html_safe %>
+            <%= task.name %>
+            <%= show_task_status(task).html_safe %>
+        </div>
+
+        <div class="col-3 text-right">
+            <%= show_task_estimated_time(task).html_safe %>
+            <%= fa_icon('calendar-check-o ') %> <%= number_with_precision((task.consumed_time ? task.consumed_time : 0) + (task.planned_time ? task.planned_time : 0), precision: 2) %>
+            <%= fa_icon('calendar-minus-o') %> <%= number_with_precision((task.remaining_time ? task.remaining_time : 0), precision: 2) %>
+            <%= task.end_date ? task.end_date.strftime("%d/%m") : '-- / --' %>
+        </div>
+    </div>
+
+    <% task.tasks.each do |sub_task| %>
+        <%= render 'tasks/show_task_and_sub_tasks', task: sub_task, begin_line: (( defined? begin_line) ? begin_line : '') + '-' %>
+    <% end %>
+</div>

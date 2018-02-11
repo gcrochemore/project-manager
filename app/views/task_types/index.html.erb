@@ -1,0 +1,54 @@
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @task_types.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.task_type.name')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, TaskType %>
+        <%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @task_types.each do |task_type| %>
+          <tr>
+    
+            <td><%= task_type.name %></td>
+    
+            <td>
+              <%= link_to fa_icon('eye').html_safe, task_type %>
+              <% if can? :edit, TaskType %>
+                <%= link_to fa_icon('pencil').html_safe, edit_task_type_path(task_type) %>
+              <% end %>
+              <% if can? :destroy, TaskType %>
+                <%= link_to fa_icon('times').html_safe, task_type, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @task_types %>
+  </div>
+</div>

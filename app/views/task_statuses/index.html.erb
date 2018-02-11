@@ -1,0 +1,51 @@
+<h1><%= t('.title') %><span class="badge badge-secondary"><%= @task_statuses.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.task_status.name')} %>
+        <%= f.search_field :order_cont, {placeholder: t('activerecord.attributes.task_status.order')} %>
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, TaskStatus %>
+        <%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+              <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+              <th><%= sort_link(@q, :order, default_order: :asc) %></th>
+              <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @task_statuses.each do |task_status| %>
+          <tr>
+                <td><%= task_status.name %></td>
+                <td><%= task_status.order %></td>
+                <td>
+              <%= link_to fa_icon('eye').html_safe, task_status %>
+              <% if can? :edit, TaskStatus %>
+                <%= link_to fa_icon('pencil').html_safe, edit_task_status_path(task_status) %>
+              <% end %>
+              <% if can? :destroy, TaskStatus %>
+                <%= link_to fa_icon('times').html_safe, task_status, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @task_statuses %>
+  </div>
+</div>

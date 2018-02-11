@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @project.organization %>
+</p>
+
+<p>
+  <strong>Bug tracker:</strong>
+  <%= @project.bug_tracker %>
+</p>
+
+<%= render 'project_bundles/show_bundle_backlog', project_bundle: @project %>
+
+<%= link_to 'Back', project_path(@project) %>

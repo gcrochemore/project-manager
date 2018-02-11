@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+@import "font-awesome";
+
+.task-and-sub-task {
+  background-color: gainsboro;
+  color: black;
+  .task-not-finish{
+    text-decoration:line-through;
+  }
+  .task-and-sub-task {
+    opacity: 0.75;
+    filter:alpha(opacity=0.75*100);
+    -moz-opacity:0.75;
+    background-color: whitesmoke;
+
+    .task-and-sub-task {
+      opacity: 0.5;
+      filter:alpha(opacity=0.5*100);
+      -moz-opacity:0.5;
+    }
+  }
+}
+
+.estimated-time-lower-than-consumed-and-planned-time{
+  color: red;
+}
+
+.estimated-time-gretter-than-consumed-and-planned-time{
+  color: green;
+}
+
+.show-assignment-user-day-assignment{
+  .day, .total-time {
+
+  }
+  .assignments{
+    .user{
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+    .show-assignment-not-consumed{
+      opacity: 0.75;
+      filter:alpha(opacity=0.75*100);
+      -moz-opacity:0.75;
+    }
+
+    .assignment{
+      font-size: 75%;
+      text-align: left;
+    }
+  }
+}
+
+.simple-calendar {
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none !important;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
+  }
+  .calendar-heading{
+    font-size: 120%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+  }
+  .calendar-title{
+    font-size: 150%;
+  }
+  .thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+
+  .day {
+    width:14%;
+  }
+
+  .day-container {
+    min-height: 50px;
+    text-align: center;
+    .calendar_event_match{
+      font-size: 80%;
+      padding: 5px;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 3px;
+      color: black;
+    }
+    .calendar_event_match:hover{
+      background-color: #FAF0C5;
+      color: #FF8C00;
+      border-color: #FF8C00;
+    }
+  }
+
+  .day_of_date{ }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today { background-color: #CECECE;}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month { filter:alpha(opacity=50); opacity:0.5; }
+  .next-month { filter:alpha(opacity=50); opacity:0.5; }
+  .current-month {}
+
+  .has-events {}
+}

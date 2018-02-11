@@ -1,0 +1,54 @@
+<h1><%%= t('.title') %><span class="badge badge-secondary"><%%= @<%= plural_table_name %>.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%%= search_form_for @q do |f| %>
+<% attributes.reject {|i| i.name == 'activated' || i.password_digest?}.each do |attribute| -%>
+        <%%= f.search_field :<%= attribute.name %>_cont, {placeholder: <%= "t('activerecord.attributes.#{singular_table_name}.#{attribute.name}')" %>} %>
+<% end -%>
+        <br>
+        <br>
+        <%%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <%% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <%% if can? :create, <%= plural_table_name.classify  %> %>
+        <%%= link_to (fa_icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <%% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <th><%%= sort_link(@q, :<%= attribute.name %>, default_order: :asc) %></th>
+    <% end -%>
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+          <tr>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+    <% end -%>
+            <td>
+              <%%= link_to fa_icon('eye').html_safe, <%= singular_table_name %> %>
+              <%% if can? :edit, <%= plural_table_name.classify  %> %>
+                <%%= link_to fa_icon('pencil').html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
+              <%% end %>
+              <%% if can? :destroy, <%= plural_table_name.classify  %> %>
+                <%%= link_to fa_icon('times').html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%% end %>
+            </td>
+          </tr>
+        <%% end %>
+      </tbody>
+    </table>
+    <%%= will_paginate @<%= plural_table_name %> %>
+  </div>
+</div>

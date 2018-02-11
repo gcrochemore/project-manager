@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @project.organization %>
+</p>
+
+<p>
+  <strong>Bug tracker:</strong>
+  <%= @project.bug_tracker %>
+</p>
+
+<%= link_to 'Backlog', show_backlog_project_path %> |
+<%= link_to 'Planning', show_assignments_project_path %> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
